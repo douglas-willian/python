@@ -14,6 +14,7 @@ def inserir(dicionario):
         input(
         'Qual a ultima estação acessada: ').upper()
     ]
+    salvar(dicionario)
 
 
 def pesquisar(dicionario, login):
@@ -36,3 +37,13 @@ def listar(dicionario):
         print("Objeto......")
         print("Login: ", chave)
         print("Dados:", valor)
+
+def salvar(dicionario):
+    with open('bd.txt', 'a') as arquivo:
+        for chave, valor in dicionario.items():
+            arquivo.write(chave + ':' + str(valor))
+
+def lerDB(db):
+    with open(str(db) + '.txt', 'r') as arquivo:
+        for linha in arquivo.readlines():
+            print(linha)
